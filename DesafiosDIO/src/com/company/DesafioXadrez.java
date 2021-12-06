@@ -1,14 +1,14 @@
 package com.company;
 import java.util.Scanner;
 /*
-No tabuleiro de xadrez, a casa na linha 1, coluna 1 (canto superior esquerdo)
-é sempre branca e as cores das casas se alternam entre branca e preta,
-de acordo com o padrão conhecido como... xadrez! Dessa forma,
-como o tabuleiro tradicional tem oito linhas e oito colunas,
-a casa na linha 8, coluna 8 (canto inferior direito) será também branca.
-Neste problema, entretanto, queremos saber a cor da casa no canto inferior direito
-de um tabuleiro com dimensões quaisquer:L linhas e C colunas.
-No exemplo da figura, para L = 6 eC = 9, a casa no canto inferior direito será preta.
+On the chessboard, the square in row 1, column 1 (upper left corner)
+it's always white and the house colors alternate between white and black,
+according to the pattern known as... chess! In this way,
+as the traditional board has eight rows and eight columns,
+the square in row 8, column 8 (bottom right) will also be white.
+In this problem, however, we want to know the color of the square in the lower right corner.
+of a board with any dimensions: L rows and C columns.
+In the example in the figure, for L = 6 and C = 9, the square in the lower right corner will be black.
  */
 public class DesafioXadrez {
     public static void main(String[] args) {

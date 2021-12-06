@@ -1,10 +1,20 @@
 package com.company;
-
-
-import jdk.jfr.Unsigned;
-
 import java.math.BigInteger;
 import java.util.Scanner;
+
+/*
+A queen requested the services of a monk and told him she would pay any price.
+The monk, in need of food, asked the queen if payment could be made in grains
+of wheat arranged on a checkerboard, so that the first square had only one grain,
+and subsequent squares twice the previous square. The queen considered the payment
+cheap and asked that the service be performed, however, one of the knights who was
+present and understood a little math warned her that it would be impossible to perform the payment,
+as the amount of grain would be too high. Curious, the queen then asked this knight,
+who was good at calculus, to make a program that received as input the number of squares
+to be used in a checkerboard and presented the corresponding amount of kg of wheat,
+knowing that each 12 grains of cereal correspond to one gram. Finally, the quantity calculation
+must fit into an unsigned 64-bit integer value.
+ */
 
 public class DesafioGrãos {
     public static void main(String[] args) {
