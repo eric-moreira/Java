@@ -17,6 +17,6 @@ public class Main {
         System.out.println(testePilha);
         System.out.println(testePilha.pop());
         System.out.println(testePilha);
-        
+
     }
 }
