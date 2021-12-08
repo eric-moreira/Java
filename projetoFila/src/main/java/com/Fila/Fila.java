@@ -1,5 +1,7 @@
 package com.Fila;
-
+/*
+    RC 10 - isEmpty() == true
+ */
 public class Fila {
 
     private NoFila refNoEntrada;
@@ -8,14 +10,15 @@ public class Fila {
         this.refNoEntrada = null;
     }
 
-    public void enqueue(NoFila novoNo){
+    public void enqueue(int dado){
+        NoFila novoNo = new NoFila(dado);
         novoNo.setRefNo(refNoEntrada);
         refNoEntrada = novoNo;
     }
 
 
 
-    public NoFila first(){
+    public int first(){
         if(!this.isEmpty()){
             NoFila entrada = refNoEntrada;
             while(true) {
@@ -25,12 +28,12 @@ public class Fila {
                     break;
                 }
             }
-            return entrada;
+            return entrada.getDado();
         }
-        return null;
+        return 10;
     }
 
-    public NoFila dequeue(){
+    public int dequeue(){
         if(!this.isEmpty()){
             NoFila noAux = refNoEntrada;
             NoFila entrada = refNoEntrada;
@@ -44,9 +47,9 @@ public class Fila {
                     break;
                 }
             }
-            return entrada;
+            return entrada.getDado();
         }
-        return null;
+        return 10;
     }
 
     public boolean isEmpty(){

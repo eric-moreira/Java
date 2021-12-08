@@ -4,10 +4,8 @@ public class Main {
     public static void main(String[] args) {
         Fila testeFila = new Fila();
         int contador = 0;
-        NoFila i;
         while (true){
-            i = new NoFila(contador);
-            testeFila.enqueue(i);
+            testeFila.enqueue(contador);
             contador++;
             if (contador == 10){
                 break;
@@ -24,7 +22,7 @@ public class Main {
 
         System.out.println(testeFila + "\n");
 
-        testeFila.enqueue(new NoFila(99));
+        testeFila.enqueue(99);
 
         System.out.println(testeFila + "\n");
 
