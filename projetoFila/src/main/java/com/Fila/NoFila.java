@@ -1,20 +1,21 @@
 package com.Fila;
 
-public class NoFila {
+public class NoFila<T> {
 
-    private int dado;
-    private NoFila refNo = null;
+    private T object;
+    private NoFila<T> refNo = null;
 
-    public NoFila(int dado) {
-        this.dado = dado;
+    public NoFila(T object) {
+        this.object = object;
     }
 
-    public int getDado() {
-        return dado;
+
+    public T getObject() {
+        return object;
     }
 
-    public void setDado(int dado) {
-        this.dado = dado;
+    public void setObject(T object) {
+        this.object = object;
     }
 
     public NoFila getRefNo() {
@@ -28,7 +29,7 @@ public class NoFila {
     @Override
     public String toString() {
         return "NoFila{" +
-                "dado=" + dado +
+                "objeto=" + object +
                 '}';
     }
 }

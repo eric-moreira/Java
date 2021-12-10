@@ -2,10 +2,10 @@ package com.Fila;
 
 public class Main {
     public static void main(String[] args) {
-        Fila testeFila = new Fila();
+        Fila<String> testeFila = new Fila();
         int contador = 0;
         while (true){
-            testeFila.enqueue(contador);
+            testeFila.enqueue(String.valueOf(contador));
             contador++;
             if (contador == 10){
                 break;
@@ -22,7 +22,7 @@ public class Main {
 
         System.out.println(testeFila + "\n");
 
-        testeFila.enqueue(99);
+        testeFila.enqueue("Teste");
 
         System.out.println(testeFila + "\n");
 

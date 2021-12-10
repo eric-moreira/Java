@@ -1,24 +1,24 @@
 package com.Fila;
 /*
-    RC 10 - isEmpty() == true
+    RC -1 - isEmpty() == true
  */
-public class Fila {
+public class Fila<T> {
 
-    private NoFila refNoEntrada;
+    private NoFila<T> refNoEntrada;
 
     public Fila(){
         this.refNoEntrada = null;
     }
 
-    public void enqueue(int dado){
-        NoFila novoNo = new NoFila(dado);
+    public void enqueue(T obj){
+        NoFila novoNo = new NoFila(obj);
         novoNo.setRefNo(refNoEntrada);
         refNoEntrada = novoNo;
     }
 
 
 
-    public int first(){
+    public T first(){
         if(!this.isEmpty()){
             NoFila entrada = refNoEntrada;
             while(true) {
@@ -28,12 +28,12 @@ public class Fila {
                     break;
                 }
             }
-            return entrada.getDado();
+            return (T) entrada.getObject();
         }
-        return 10;
+        return null;
     }
 
-    public int dequeue(){
+    public T dequeue(){
         if(!this.isEmpty()){
             NoFila noAux = refNoEntrada;
             NoFila entrada = refNoEntrada;
@@ -47,9 +47,9 @@ public class Fila {
                     break;
                 }
             }
-            return entrada.getDado();
+            return (T) entrada.getObject();
         }
-        return 10;
+        return null;
     }
 
     public boolean isEmpty(){
@@ -67,7 +67,7 @@ public class Fila {
 
         if (refNoEntrada != null){
             while (true){
-                stringRetorno += "[No{dado=" + noAux.getDado() + "}] ----> ";
+                stringRetorno += "[No{objeto=" + noAux.getObject() + "}] ----> ";
                 if (noAux.getRefNo() != null){
                     noAux = noAux.getRefNo();
                 } else {
