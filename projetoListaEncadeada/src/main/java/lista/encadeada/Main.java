@@ -20,7 +20,7 @@ public class Main {
         System.out.println(testeListaEncadeada);
 
         System.out.println(testeListaEncadeada.remove(3));
-        
+
         System.out.println(testeListaEncadeada);
 
 
