@@ -29,4 +29,70 @@ public class ListaDuplamenteEncadeada<T> {
         }
         return noAuxiliar;
     }
+
+    public void add(T elemento){
+        NoDuplo<T> novoNo = new NoDuplo<>(elemento);
+        novoNo.setNoProximo(null);
+        novoNo.setNoAnterior(ultimoNo);
+        if (primeiroNo == null){
+            primeiroNo = novoNo;
+        }
+        if (ultimoNo != null) {
+            ultimoNo.setNoProximo(novoNo);
+        }
+        ultimoNo = novoNo;
+        size++;
+    }
+    public void add(int index, T elemento){
+        NoDuplo<T> noAuxiliar = getNo(index);
+        NoDuplo<T> novoNo = new NoDuplo<>(elemento);
+
+        if (noAuxiliar.getNoProximo() != null){
+            novoNo.setNoAnterior(noAuxiliar.getNoAnterior());
+            novoNo.setNoProximo(noAuxiliar);
+            noAuxiliar.setNoAnterior(novoNo);
+        } else {
+            novoNo.setNoAnterior(ultimoNo);
+            ultimoNo = novoNo;
+        }
+
+        if (index == 0){
+            primeiroNo = novoNo;
+        } else {
+            novoNo.getNoAnterior().setNoProximo(novoNo);
+        }
+
+        size++;
+    }
+
+    public void remove (int index){
+        if (index == 0){
+            primeiroNo = primeiroNo.getNoProximo();
+            if (primeiroNo != null){
+                primeiroNo.setNoAnterior(null);
+            }
+        } else {
+            NoDuplo<T> noAux = getNo(index);
+            noAux.getNoAnterior().setNoProximo(noAux.getNoProximo());
+            if (noAux != ultimoNo){
+                noAux.getNoProximo().setNoAnterior(noAux.getNoAnterior());
+            } else {
+                ultimoNo = noAux;
+            }
+        }
+        this.size--;
+    }
+
+    @Override
+    public String toString() {
+        String strRetorno = "";
+        NoDuplo<T> noAux = primeiroNo;
+
+        for (int i = 0; i < sizeOf(); i++){
+            strRetorno += "[No{conteudo="+ noAux.getConteudo() +"}]---->";
+            noAux = noAux.getNoProximo();
+        }
+        strRetorno += "null";
+        return strRetorno;
+    }
 }
