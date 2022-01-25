@@ -28,11 +28,11 @@ public class ArvoreBinaria<T extends Comparable<T>> {
         showInOrder(this.raiz);
     }
 
-    private void showinOrder(BinNo<T> atual){
+    private void showInOrder(BinNo<T> atual){
         if (atual != null){
-            showinOrder(atual.getNoEsq());
+            showInOrder(atual.getNoEsq());
             System.out.println(atual.getConteudo() + ", ");
-            showinOrder(atual.getNoDir());
+            showInOrder(atual.getNoDir());
         }
     }
 
@@ -100,11 +100,35 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 
 
             } else if (atual.getNoDir() == null){
-
+                if (noParent.getNoEsq() == atual){
+                    noParent.setNoEsq(atual.getNoEsq());
+                } else{
+                    noParent.setNoDir(atual.getNoEsq());
+                }
             } else if (atual.getNoEsq() == null){
-
+                if (noParent.getNoEsq() == atual){
+                    noParent.setNoEsq(atual.getNoDir());
+                } else {
+                    noParent.setNoDir(atual.getNoDir());
+                }
             } else {
+                for (noAux = atual, noChild = atual.getNoEsq();
+                    noChild.getNoDir() != null;
+                    noAux = noChild, noChild = noChild.getNoDir()
+                ){
+                    if(noChild != atual.getNoEsq()){
+                        noAux.setNoDir(noChild.getNoEsq());
+                        noChild.setNoEsq(atual.getNoEsq());
+                    }
+                    noChild.setNoDir(atual.getNoDir());
 
+                    if(noParent.getNoEsq() == atual){
+                        noParent.setNoEsq(noChild);
+                    } else {
+                        noParent.setNoDir(noChild);
+                    }
+
+                }
             }
 
         } catch(NullPointerException erro){
