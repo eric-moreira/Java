@@ -1,8 +1,6 @@
 package dio.collections.exercicios;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class ExemploList {
     public static void main(String[] args){
@@ -45,10 +43,53 @@ mês elas ocorreram (mostrar o mês por extenso: 1 – Janeiro, 2
         // Confira se a nota 5.0 está na lista
         System.out.println("Confira se a nota 5.0 está na lista: " + notas.contains(5d) );
 
-        System.out.println("Exiba todas as notas na ordem que foram inseridas: ");
+        /*System.out.println("Exiba todas as notas na ordem que foram inseridas: ");
         for (Double nota : notas) {
             System.out.println(nota);
+        }*/
+
+        // Exiba a terceira nota adicionada
+        System.out.println("Exiba a terceira nota adicionada: " + notas.get(2));
+
+        // Exiba a menor nota
+        System.out.println("Exiba a menor nota: " + Collections.min(notas));
+
+        // Exiba a maior nota
+        System.out.println("Exiba a maior nota: " + Collections.max(notas));
+
+        // Exiba a soma dos valores
+        Iterator<Double> iterator = notas.iterator();
+        Double soma = 0d;
+        while (iterator.hasNext()){
+            Double next = iterator.next();
+            soma += next;
         }
+        System.out.println("Exiba a soma dos valores: " + soma);
+
+        // Exiba a media das notas
+        System.out.println("Exiba a media das notas: " + soma/notas.size());
+
+        // Remova a nota zero
+        notas.remove(0d);
+        System.out.println("Remova a nota zero: " + notas);
+
+        // Remova a nota na posição zero
+        notas.remove(0);
+        System.out.println("Remova a nota na posição zero: " + notas);
+
+        // Remova as notas menores que 7
+        Iterator<Double> iterator1 = notas.iterator();
+        while (iterator1.hasNext()){
+            Double next = iterator1.next();
+            if (next < 7) iterator1.remove();
+        }
+        System.out.println("Remova as notas menores que 7" + notas);
+
+        // Apague toda a lista
+        notas.clear();
+        System.out.println("Apague toda a lista: " + notas);
+        System.out.println("Confira se a lista está vazia: " + notas.isEmpty());
 
     }
+
 }
