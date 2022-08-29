@@ -36,6 +36,6 @@ public class Worker {
     }
 
     public double getBonus(){
-        return this.getSalary() * 0.1;
+        return this.getSalary() * 0.05;
     }
 }
