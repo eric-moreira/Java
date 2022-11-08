@@ -9,8 +9,8 @@ public class ControleBonificação {
 
     }
 
-
     public double getSoma(){
         return this.soma;
     }
+
 }
