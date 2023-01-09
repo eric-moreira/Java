@@ -71,8 +71,7 @@ public class Account {
     }
 
     public boolean transfer (Account receiver, double amount){
-        if (this.getBalance() >= amount){
-            this.setBalance(this.getBalance() - amount);
+        if (this.withdraw(amount)){
             receiver.deposit(amount);
             return true;
         } else {
