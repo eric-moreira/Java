@@ -2,9 +2,8 @@ package com.santana.java.back.end.userapi.controller;
 
 import com.santana.java.back.end.userapi.dto.UserDTO;
 import jakarta.annotation.PostConstruct;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.apache.catalina.User;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,11 +11,6 @@ import java.util.List;
 
 @RestController
 public class UserController {
-    @GetMapping("/")
-    public String getMensagem(){
-        return "Spring boot is working!";
-    }
-
     public static List<UserDTO> usuarios = new ArrayList<UserDTO>();
     @PostConstruct
     public void initiateList(){
@@ -30,7 +24,7 @@ public class UserController {
 
         UserDTO userDTO2 = new UserDTO();
         userDTO2.setNome("Luiz");
-        userDTO2.setNome("456");
+        userDTO2.setCpf("456");
         userDTO2.setEndereco("Rua b");
         userDTO2.setEmail("luiz@email.com");
         userDTO2.setTelefone("1234-5678");
@@ -49,9 +43,42 @@ public class UserController {
         usuarios.add(userDTO3);
     }
 
+    @GetMapping("/")
+    public String getMensagem(){
+        return "Spring boot is working!";
+    }
+
     @GetMapping("/users")
     public List<UserDTO> getUsers(){
         return usuarios;
+    }
+
+    @GetMapping("/users/{cpf}")
+    public UserDTO getUsersFiltro(@PathVariable String cpf){
+        for(UserDTO userFilter: usuarios){
+            if(userFilter.getCpf().equals(cpf)){
+                return userFilter;
+            }
+        }
+        return null;
+    }
+
+    @PostMapping("/newUser")
+    UserDTO inserir(@RequestBody UserDTO userDTO){
+        userDTO.setDataCadastro(new Date());
+        usuarios.add(userDTO);
+        return userDTO;
+    }
+
+    @DeleteMapping("/user/{cpf}")
+    public boolean remover(@PathVariable String cpf){
+        for(UserDTO userFilter: usuarios){
+            if(userFilter.getCpf().equals(cpf)){
+                usuarios.remove(userFilter);
+                return true;
+            }
+        }
+        return false;
     }
 
 }
